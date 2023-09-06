@@ -1,0 +1,9 @@
+{
+    "name": "chatrooms",
+    "version": "0.0.1",
+    "description": "word count",
+    "dependencies": {
+        "htmlparser": "^1.7.7",
+        "request": "^2.88.2"
+    }
+}
