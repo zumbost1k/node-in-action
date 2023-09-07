@@ -23,16 +23,22 @@ function badRequest(res) {
 
 function upload(req, res) {
     if (!isFormData(req)) {
-      res.statusCode = 400;
-      res.end('Bad Request: expecting multipart/form-data');
-      return;
+        res.statusCode = 400;
+        res.end('Bad Request: expecting multipart/form-data');
+        return;
     }
-  }
-  
-  function isFormData(req) {
+    var form = new formidable.IncomingForm();
+    form.parse(req, function (err, fields, files) {
+        console.log(fields);
+        console.log(files);
+        res.end('upload complete!');
+    });
+}
+
+function isFormData(req) {
     var type = req.headers['content-type'] || '';
     return 0 == type.indexOf('multipart/form-data');
-  }
+}
 var server = http.createServer(function (req, res) {
 
     switch (req.method) {
